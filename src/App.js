@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { NavBar } from './Component/NavBar';
+import { About } from './Component/About';
+import { Home } from './Component/Home';
+import { Contact } from './Component/Contact';
+import { Projects } from './Component/Projects';
+import { Weeb } from './Component/Weeb';
 
 function App() {
+  const [currentTab, setCurrentTab] = useState("Home")
+  const [mangaList, setMangaList] = useState([])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className = "container">
+        <NavBar changeTab={(input) => setCurrentTab(input)}></NavBar>
+
+        {currentTab === "Home" ? <Home></Home> : (<></>) }
+        {currentTab === "About" ? <About></About> : (<></>) }
+        {currentTab === "Projects" ? <Projects></Projects> : (<></>) }
+        {currentTab === "Contact" ? <Contact></Contact> : (<></>) }
+        {currentTab === "Weeb" ? <Weeb manga={mangaList} setManga={setMangaList} ></Weeb> : (<></>) }
+      </div>
     </div>
   );
 }

@@ -1,0 +1,67 @@
+import React, { useState } from 'react'
+
+export const Weeb = ({manga, setManga}) => {
+    
+    const [title, setTitle] = useState("")
+    const [score, setScore] = useState("")
+
+    const addManga = () => {
+        if(isNaN(score) || score > 10){
+            return;
+        }
+        if(title==="" || score==="") {
+            return;
+        }
+        setManga([...manga, {title:title, score:score}]);
+        setTitle("");
+        setScore("");
+    }
+    const handleTitle = (event) => {
+        setTitle(event.target.value);
+    }
+    const handleScore = (event) => {
+        setScore(event.target.value);
+    }
+    const deleteManga = (key) => {
+        setManga(manga.filter((value) => value.title !== key));
+    }
+    
+
+  return (
+    <div>
+        <h2>Weeb List</h2>
+        <div className="box-name">
+            <label>  Title  </label>
+            <label>  Score/10  </label>
+        </div>
+        <div className="input-box">
+            <input value = {title} onChange={handleTitle}></input>
+            <input value = {score} onChange={handleScore}></input>
+            <button className="add-button" onClick={addManga}>Add</button>
+        </div>
+        <h2 className="tab-title"> Manga List </h2>
+        <div className="MangaList">
+            {manga.length > 0 ? (
+                <table className="MangaList">
+                    <thead>
+                        <tr>
+                            <th> Title </th>
+                            <th> Score </th>
+                            {/* <th> Title </th> */}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {manga.map((value) => 
+                            <tr className= "list-manga" key={value.title}>
+                                <td className="list-title"> {value.title}</td>
+                                <td className="list-score"> {value.score}</td>
+                                <td className="delete-button" onclick={() => deleteManga(value.title)}>X</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            ): (<div className="empty-list"> Empty! </div>)}
+        </div>
+    </div>
+  );
+};
