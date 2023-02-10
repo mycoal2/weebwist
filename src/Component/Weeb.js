@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const Weeb = ({manga, setManga}) => {
+export const Weeb = ({manga, setManga, type}) => {
     
     const [title, setTitle] = useState("")
     const [score, setScore] = useState("")
@@ -22,45 +22,39 @@ export const Weeb = ({manga, setManga}) => {
     const handleScore = (event) => {
         setScore(event.target.value);
     }
-    const deleteManga = (key) => {
-        setManga(manga.filter((value) => value.title !== key));
+    const deleteManga = (title) => {
+        setManga(manga.filter((value) => value.title !== title))
     }
     
 
   return (
     <div>
-        <h2>Weeb List</h2>
+        <h2 className='header-list'>{type}</h2>
         <div className="box-name">
             <label>  Title  </label>
             <label>  Score/10  </label>
         </div>
         <div className="input-box">
-            <input value = {title} onChange={handleTitle}></input>
-            <input value = {score} onChange={handleScore}></input>
+            <input className="inputTitle" placeholder="Grand Blue" value = {title} onChange={handleTitle}></input>
+            <input className="inputScore" placeholder="10" value = {score} onChange={handleScore}></input>
             <button className="add-button" onClick={addManga}>Add</button>
         </div>
-        <h2 className="tab-title"> Manga List </h2>
-        <div className="MangaList">
-            {manga.length > 0 ? (
-                <table className="MangaList">
-                    <thead>
-                        <tr>
-                            <th> Title </th>
-                            <th> Score </th>
-                            {/* <th> Title </th> */}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {manga.map((value) => 
-                            <tr className= "list-manga" key={value.title}>
-                                <td className="list-title"> {value.title}</td>
-                                <td className="list-score"> {value.score}</td>
-                                <td className="delete-button" onclick={() => deleteManga(value.title)}>X</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-            ): (<div className="empty-list"> Empty! </div>)}
+        <h2 className="tab-title"> {type} List </h2>
+
+        <div className='List'>
+            {manga.length > 0 ? (<ul>
+                {manga.map((value) => 
+                <li className='list-item' key={value.title}>
+                    <span>{value.title}</span>
+                    <span>{value.score}</span>
+                    <span onClick={() => deleteManga(value.title)} className='delete-button'><button> X</button></span>
+                    
+                </li>)
+                }
+            </ul>) 
+            : (<div> List is empty </div>)
+            }
+            
         </div>
     </div>
   );
