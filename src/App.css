@@ -24,7 +24,7 @@ border:0px;
 .nav {
   padding: 0px;
   width: 100%;
-  height: 110px;
+  height: 100px;
 }
 
 .navbarList {
@@ -93,4 +93,18 @@ input {
   /* display:flex; */
   justify-content: space-between;
   align-items:center;
+}
+.searchBar {
+  margin: 10px;
+}
+.searchList {
+  display:flex;
+  justify-content: space-between;
+  background-color: grey;
+  align-items: center;
+  padding-left: 0px;
+  padding-right: 0px;
+  list-style: none;
+  margin: 0px;
+  height:65px;
 }

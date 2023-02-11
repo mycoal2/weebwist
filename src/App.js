@@ -5,13 +5,12 @@ import { useEffect, useState } from 'react';
 import { NavBar } from './Component/NavBar';
 import { Weeb } from './Component/Weeb';
 import { Home } from './Component/Home';
-import { Popular } from './Component/Popular';
+import { Browse } from './Component/Browse';
 
 function App() {
   const [currentTab, setCurrentTab] = useState("Home")
   const [mangaList, setMangaList] = useState([])
   const [animeList, setAnimeList] = useState([])
-  const [search, setSearch] = useState([])
 
 
   return (
@@ -23,7 +22,7 @@ function App() {
         {currentTab === "Manga" ? <Weeb manga={mangaList} setManga={setMangaList} type={"Manga"}></Weeb> : (<></>) }
         {currentTab === "Anime" ? <Weeb manga={animeList} setManga={setAnimeList} type={"Anime"}></Weeb> : (<></>) }
         {currentTab === "Weeb" ? <Weeb manga={mangaList} setManga={setMangaList} type={"Manga"}></Weeb> : (<></>) }
-        {currentTab === "Popular" ? <Popular search={search}></Popular> : (<></>) }
+        {currentTab === "Browse" ? <Browse></Browse> : (<></>) }
       </div>
     </div>
   );

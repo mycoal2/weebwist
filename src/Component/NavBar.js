@@ -11,7 +11,7 @@ export const NavBar = ({changeTab}) => {
             <li className="navbarItem" onClick={() => {changeTab("Manga")}} id= "Manga"> Manga </li>
             <li className="navbarItem" onClick={() => {changeTab("Anime")}} id= "Anime"> Anime </li>
             <li className="navbarItem" onClick={() => {changeTab("Weeb")}} id= "Weeb"> Weeb </li>
-            <li className="navbarItem" onClick={() => {changeTab("Popular")}} id= "Popular"> Popular </li>
+            <li className="navbarItem" onClick={() => {changeTab("Browse")}} id= "Browse"> Browse </li>
           </flex>
           <flex className="navbarFlex">
             <li className="navbarItem"><button> Icon1</button></li>
