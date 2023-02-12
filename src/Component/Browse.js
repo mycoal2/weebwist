@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 
 export const Browse = ({searchedList, setSearchedList}) => {
-    const [searchedList1, setSearchedList1] = useState([]);
-
+    // const [searchedList1, setSearchedList1] = useState([]);
+    
     var query = `
     query ($id: Int, $search: String, $page: Int, $perPage: Int) {
         Page (page: $page, perPage: $perPage) {
@@ -90,8 +90,9 @@ function handleResponse(response) {
     });
 }
 
+
 function handleData(jsonData) {
-    const result = [jsonData].map(element => element.data.Page.media[0].title);
+    // const result = [jsonData].map(element => element.data.Page.media[0].title);
     // const result1 = [jsonData].map(element => Object.keys(element.data.Page.media).length);
     // console.log(result);
     // console.log(variables);
@@ -99,18 +100,20 @@ function handleData(jsonData) {
     let jsonMedia = jsonData.data.Page.media;
     console.log(jsonMedia.length + " length ");
     console.log(jsonMedia);
-    jsonMedia.map(element => {
-        setSearchedList1([...searchedList1, {coverImage:element.coverImage, 
-            title:element.title.romaji,
-            rating:element.averageScore,
-            type:element.type,
-            status:element.status,
-            siteUrl:element.siteUrl,
-            id:element.id,
-            genres:element.genres,
-            popularity:element.popularity 
-            }]);
-        })
+    setSearchedList([...searchedList, jsonMedia]);
+    // jsonMedia.map(element => {
+    //     setSearchedList([...searchedList, {coverImage:element.coverImage, 
+    //         title:element.title.romaji,
+    //         rating:element.averageScore,
+    //         type:element.type,
+    //         status:element.status,
+    //         siteUrl:element.siteUrl,
+    //         id:element.id,
+    //         genres:element.genres,
+    //         popularity:element.popularity,
+    //     }]);
+    // });
+        // console.log(searchedList);
     // for (let i = 0; i < jsonMedia.length; i++) {
     //     setSearchedList1([...searchedList1, { coverImage:jsonMedia[i].coverImage, 
     //     //                                     title:jsonMedia[i].title.romaji,
@@ -125,7 +128,7 @@ function handleData(jsonData) {
     //     console.log("list of i")                                    
     // }
     // console.log(jsonData);
-    console.log(searchedList1);
+    // console.log(searchedList1);
     // console.log(jsonData.data.Page.media[0].coverImage.extraLarge);
 }
 
@@ -133,36 +136,6 @@ function handleError(error) {
     alert('Error, check console');
     console.error(error);
 }
-
-// const [inputSearch, setInputSearch] = useState("")
-
-// const handleInputSearch = (event) => {
-//     setInputSearch(event.target.value);
-//     setVariable(inputSearch);
-// }
-
-// function setVariable(title) {
-//     variables = {
-//         search: title,
-//         page: 1,
-//         perPage: 5,
-//     };
-//     options = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json',
-//         },
-//         body: JSON.stringify({
-//             query: query,
-//             variables: variables
-//         })
-//     };
-//     console.log(title);
-//     console.log(variables);
-//     console.log(options);
-//     //searchAnime();
-// }
 
   return (
   <div>
@@ -185,20 +158,20 @@ function handleError(error) {
             </div>
         </div>
         <div className='searchEntries'>
-            {searchedList1.length > 0 ? ( 
-                <ul className='searchUl'> {searchedList1.map((value) =>
+            {searchedList.length > 0 ? ( 
+                <ul className='searchUl'> {searchedList.map((value) => value.map((val) => 
                     <div className='entryRow'> 
                         <div className='entryRowLeft'>
-                            <div className='rowCoverImage' style={{backgroundImage:`url(${value.coverImage.extraLarge})`}}> </div>
-                            <div className='rowTitle'><a href={value.siteUrl}> {value.title} </a></div>
+                            <div className='rowCoverImage' style={{backgroundImage:`url(${val.coverImage.extraLarge})`}}> </div>
+                            <div className='rowTitle'><a href={val.siteUrl}> {val.title.romaji} </a></div>
                         </div>
                             <div className='entryRowRight'>
                             <div className='rowRatings'>Ratings here</div>
                             <div className='rowType'>Type here</div>
                             <div className='rowStatus'>Status here</div>
                         </div>
-                    </div>)
-}
+                    </div>))
+                }
                 </ul>
                 ) : (<div></div>)
             }
