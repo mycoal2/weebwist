@@ -1,0 +1,145 @@
+.searchBar {
+    margin: 10px;
+  }
+
+div {
+    display:block;
+}
+  
+.searchList {
+    display:flex;
+    justify-content: space-between;
+    background-color: grey;
+    align-items: center;
+    /* padding-left: 40px; */
+    /* padding-right: 69px; */
+    list-style: none;
+    margin: 0px;
+    height:70px;
+}
+.listHeader {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:1.5rem;
+    width: 100%;
+}
+.listHeaderLeft {
+    display:flex;
+}
+.coverImage {
+    display:flex;
+    max-width: 100px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-right: 175px;
+}
+.title {
+    display: flex;
+    text-align: left;
+    padding-top:21px;
+    padding-bottom:21px;
+    padding-left:3vw;
+    padding-right: 40vw;
+}
+.listHeaderRight {
+    display:flex;
+}
+.ratings {
+    display:flex;
+    text-align: center;
+    padding-top: 21px;
+    padding-bottom:21px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+.type {
+    display:flex;
+    padding-top: 21px;
+    padding-bottom:21px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+.status {
+    display:flex;
+    text-align: center;
+    padding-top: 21px;
+    padding-bottom:21px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+.searchEntries {
+    background-color: yellow;
+    margin: 0px;
+}
+.searchUl {
+    margin: 0px;
+    padding: 0px;;
+}
+.entryRow {
+    background-color: cyan;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 240px;
+}
+.entryRowLeft {
+    display:flex;
+}
+.entryRowRight {
+    display:flex;
+    /* height: 220px; */
+}
+.rowCoverImage {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 150px;
+    height: 220px;
+    margin: 10px;
+    /* background-image: url(https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx87395-KilGMYyoFULt.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.rowTitle {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    /* padding-right:260px; */
+    width: 45vw;
+}
+.rowTitle a {
+    display: flex;
+    text-align: left;
+    text-decoration: none;
+    color: red;
+    font-size: 25px;
+}
+.rowRatings {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 25px;
+
+    /* padding-right:260px; */
+    /* width: 45vw; */
+}
+.rowType {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 25px;
+
+    /* padding-right:260px; */
+    /* width: 45vw; */
+}
+.rowStatus {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 25px;
+
+    /* padding-right:260px; */
+    /* width: 45vw; */
+}
