@@ -15,6 +15,7 @@ export const Weeb = ({manga, setManga, type}) => {
         setManga([...manga, {title:title, score:score}]);
         setTitle("");
         setScore("");
+        console.log(manga);
     }
     const handleTitle = (event) => {
         setTitle(event.target.value);
@@ -42,7 +43,8 @@ export const Weeb = ({manga, setManga, type}) => {
         <h2 className="tab-title"> {type} List </h2>
 
         <div className='List'>
-            {manga.length > 0 ? (<ul>
+            {manga.length > 0 ? 
+            (<ul>
                 {manga.map((value) => 
                 <li className='list-item' key={value.title}>
                     <span>{value.title}</span>
