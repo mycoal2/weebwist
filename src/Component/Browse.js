@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 
 
 export const Browse = ({searchedList, setSearchedList}) => {
-    // const [searchedList1, setSearchedList1] = useState([]);
-    
     var query = `
     query ($id: Int, $search: String, $page: Int, $perPage: Int) {
         Page (page: $page, perPage: $perPage) {
@@ -92,44 +90,10 @@ function handleResponse(response) {
 
 
 function handleData(jsonData) {
-    // const result = [jsonData].map(element => element.data.Page.media[0].title);
-    // const result1 = [jsonData].map(element => Object.keys(element.data.Page.media).length);
-    // console.log(result);
-    // console.log(variables);
-    // console.log(result1);
     let jsonMedia = jsonData.data.Page.media;
-    console.log(jsonMedia.length + " length ");
-    console.log(jsonMedia);
-    setSearchedList([...searchedList, jsonMedia]);
-    // jsonMedia.map(element => {
-    //     setSearchedList([...searchedList, {coverImage:element.coverImage, 
-    //         title:element.title.romaji,
-    //         rating:element.averageScore,
-    //         type:element.type,
-    //         status:element.status,
-    //         siteUrl:element.siteUrl,
-    //         id:element.id,
-    //         genres:element.genres,
-    //         popularity:element.popularity,
-    //     }]);
-    // });
-        // console.log(searchedList);
-    // for (let i = 0; i < jsonMedia.length; i++) {
-    //     setSearchedList1([...searchedList1, { coverImage:jsonMedia[i].coverImage, 
-    //     //                                     title:jsonMedia[i].title.romaji,
-    //     //                                     rating:jsonMedia[i].averageScore,
-    //     //                                     type:jsonMedia[i].type,
-    //     //                                     status:jsonMedia[i].status,
-    //     //                                     siteUrl:jsonMedia[i].siteUrl,
-    //     //                                     id:jsonMedia[i].id,
-    //     //                                     genres:jsonMedia[i].genres,
-    //     //                                     popularity:jsonMedia[i].popularity }]);
-    //     console.log(jsonMedia[i]);
-    //     console.log("list of i")                                    
-    // }
     // console.log(jsonData);
-    // console.log(searchedList1);
-    // console.log(jsonData.data.Page.media[0].coverImage.extraLarge);
+    // console.log(jsonMedia)
+    setSearchedList([...searchedList, jsonMedia]);
 }
 
 function handleError(error) {
