@@ -92,8 +92,8 @@ function handleResponse(response) {
 function handleData(jsonData) {
     let jsonMedia = jsonData.data.Page.media;
     // console.log(jsonData);
-    // console.log(jsonMedia)
-    setSearchedList([...searchedList, jsonMedia]);
+    // console.log(jsonMedia);
+    setSearchedList([/*...searchedList,*/ jsonMedia]); //comment to show only 1 search result at a time.
 }
 
 function handleError(error) {
@@ -108,38 +108,41 @@ function handleError(error) {
             <input className='userSearch' placeholder='Search Here' value={variables.search} type="text" onChange={handleUserInput}></input>
             <button onClick={()=>searchAnime()}> Search </button>
         </div>
-        <div className='searchList'>
-            <div className='listHeader'>
-                <div className='listHeaderLeft'>
-                    <div className='coverImage'></div>
-                    <div className='title'>Title</div>
-                </div>
-                <div className='listHeaderRight'>
-                    <div className='ratings'>Rating</div>
-                    <div className='type'>Type</div>
-                    <div className='status'>Status</div>
+        <div className='searchGrid'>
+            <div className='searchList'>
+                <div className='listHeader'>
+                    <div className='listHeaderLeft'>
+                        <div className='coverImage'></div>
+                        <div className='title'>Title</div>
+                    </div>
+                    <div className='listHeaderRight'>
+                        <div className='ratings'>Rating</div>
+                        <div className='type'>Type</div>
+                        <div className='status'>Status</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div className='searchEntries'>
-            {searchedList.length > 0 ? ( 
-                <ul className='searchUl'> {searchedList.map((value) => value.map((val) => 
-                    <div className='entryRow'> 
-                        <div className='entryRowLeft'>
-                            <div className='rowCoverImage' style={{backgroundImage:`url(${val.coverImage.extraLarge})`}}> </div>
-                            <div className='rowTitle'><a href={val.siteUrl}> {val.title.romaji} </a></div>
-                        </div>
-                            <div className='entryRowRight'>
-                            <div className='rowRatings'>Ratings here</div>
-                            <div className='rowType'>Type here</div>
-                            <div className='rowStatus'>Status here</div>
-                        </div>
-                    </div>))
+            <div className='searchGridLeft'></div>
+            <div className='searchEntries'>
+                {searchedList.length > 0 ? ( 
+                    <ul className='searchUl'> {searchedList.map((value) => value.map((val) =>   //searchedList.reverse().map((value)
+                        <div className='entryRow'> 
+                            <div className='entryRowLeft'>
+                                <div className='rowCoverImage' style={{backgroundImage:`url(${val.coverImage.extraLarge})`}}> </div>
+                                <div className='rowTitle'><a href={val.siteUrl}> {val.title.romaji} </a></div>
+                            </div>
+                                <div className='entryRowRight'>
+                                <div className='rowRatings'>{val.averageScore}</div>
+                                <div className='rowType'>{val.type}</div>
+                                <div className='rowStatus'>{val.status}</div>
+                            </div>
+                        </div>))
+                    }
+                    </ul>
+                    ) : (<div></div>)
                 }
-                </ul>
-                ) : (<div></div>)
-            }
-        </div>
+            </div>
+        </div>    
     </div>
   )
 }
