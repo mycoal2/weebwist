@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/weebwist/static/css/main.63fc78cf.css",
+    "main.js": "/weebwist/static/js/main.e8739c03.js",
+    "static/js/787.0e4c42f3.chunk.js": "/weebwist/static/js/787.0e4c42f3.chunk.js",
+    "index.html": "/weebwist/index.html",
+    "main.63fc78cf.css.map": "/weebwist/static/css/main.63fc78cf.css.map",
+    "main.e8739c03.js.map": "/weebwist/static/js/main.e8739c03.js.map",
+    "787.0e4c42f3.chunk.js.map": "/weebwist/static/js/787.0e4c42f3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63fc78cf.css",
+    "static/js/main.e8739c03.js"
+  ]
+}
