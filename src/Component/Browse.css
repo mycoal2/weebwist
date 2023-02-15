@@ -8,102 +8,63 @@ div {
 .searchGrid {
     display:grid;   
     margin-top:20px;    
-    grid-template-columns: 180px auto;
-    column-gap: 40px;
+    grid-template-columns: 10% auto 10%;
+    column-gap: 20px;
     background-color:rgb(9, 44, 63);
-}
-  
-.searchList {
-    display:flex;
-    justify-content: space-between;
-    background-color: grey;
-    color:aliceblue;
-    align-items: center;
-    /* padding-left: 40px; */
-    /* padding-right: 69px; */
-    list-style: none;
-    margin: 0px;
-    height:70px;
-}
-.listHeader {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size:1.5rem;
     width: 100%;
 }
-.listHeaderLeft {
-    display:flex;
+.searchGridLeft {
+    width: auto;
 }
-.coverImage {
-    display:flex;
-    max-width: 100px;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    padding-right: 175px;
+.searchGridMiddle {
+    width: auto;
 }
-.title {
-    display: flex;
-    text-align: left;
+.searchGridRight {
+    width: auto;
+}
+
+.searchList {
+    background-color: grey;
+    color:aliceblue;
     padding-top:21px;
     padding-bottom:21px;
-    padding-left:3vw;
-    padding-right: 40vw;
 }
-.listHeaderRight {
-    display:flex;
+.listHeader {
+    display:grid;
+    grid-template-columns: 18% 46% 12% 12% 12%;
+    align-items: center;
+    font-size:1.2rem;
+    width: 100%;
+}
+.coverImage {
+    box-sizing: border-box;
+}
+.title {
+    text-align: left;
 }
 .ratings {
-    display:flex;
-    text-align: center;
-    padding-top: 21px;
-    padding-bottom:21px;
-    padding-left: 2vw;
-    padding-right: 2vw;
 }
 .type {
-    display:flex;
-    padding-top: 21px;
-    padding-bottom:21px;
-    padding-left: 2vw;
-    padding-right: 2vw;
 }
 .status {
-    display:flex;
-    text-align: center;
-    padding-top: 21px;
-    padding-bottom:21px;
-    padding-left: 2vw;
-    padding-right: 2vw;
 }
 .searchEntries {
     color:aliceblue;    
     margin: 0px;
 }
-.searchUl {
-    margin: 0px;
-    padding: 0px;;
-}
 .entryRow {
-    background-color: darkcyan;
-    display: flex;
-    /* justify-content:space-between; */
+    background-color: rgb(2, 62, 62);
+    display:grid;
+    grid-template-columns: 18% 46% 12% 12% 12%;
     align-items: center;
-    height: 240px;
 }
-.entryRowLeft {
-    display:flex;
-}
-.entryRowRight {
-    display:flex;
-    /* height: 220px; */
+.entryRow:hover {
+    background-color: rgb(6, 113, 113);
 }
 .rowCoverImage {
     align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    width: 150px;
-    height: 220px;
+    width: 100px;
+    height: 155px;
     margin: 10px;
     /* background-image: url(https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx87395-KilGMYyoFULt.jpg); */
     background-size: cover;
@@ -113,9 +74,6 @@ div {
 .rowTitle {
     display: flex;
     align-items: center;
-    padding-left: 1rem;
-    /* padding-right:260px; */
-    width: 45vw;
 }
 .rowTitle a {
     display: flex;
@@ -123,34 +81,11 @@ div {
     text-decoration: none;
     color: red;
     font-size: 25px;
+    word-break: break-word;
 }
 .rowRatings {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    padding-left: 1rem;
-    font-size: 25px;
-
-    /* padding-right:260px; */
-    /* width: 45vw; */
 }
 .rowType {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    padding-left: 1rem;
-    font-size: 25px;
-
-    /* padding-right:260px; */
-    /* width: 45vw; */
 }
 .rowStatus {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    padding-left: 1rem;
-    font-size: 25px;
-
-    /* padding-right:260px; */
-    /* width: 45vw; */
 }
