@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import Axios from "axios";
 
 export const Browse = ({searchedList, setSearchedList}) => {
     var query = `
@@ -101,6 +101,16 @@ function handleError(error) {
     console.error(error);
 }
 
+const submitAnimeList = () => {
+    Axios.post("http://localhost:3001/api/insert", {title:searchedList.title,
+                                                    rating:searchedList.rating,
+                                                    type: searchedList.type,
+                                                    status: searchedList.status,
+                                                  }).then(() => {
+                                                    alert("successful inser");
+                                                  })
+  }
+
   return (
   <div>
         <h2> Browse </h2>
@@ -136,6 +146,7 @@ function handleError(error) {
             </div>
             <div className='searchGridRight'></div>
         </div>    
+        <button onClick={submitAnimeList}> database </button>
     </div>
   )
 }
