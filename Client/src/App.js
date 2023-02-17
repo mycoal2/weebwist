@@ -5,6 +5,7 @@ import { NavBar } from './Component/NavBar';
 import { Weeb } from './Component/Weeb';
 import { Home } from './Component/Home';
 import { Browse } from './Component/Browse';
+import { Signup } from './Component/Signup';
 
 function App() {
   const [currentTab, setCurrentTab] = useState("Home");
@@ -24,6 +25,7 @@ function App() {
         {currentTab === "Anime" ? <Weeb manga={animeList} setManga={setAnimeList} type={"Anime"}></Weeb> : (<></>) }
         {currentTab === "Weeb" ? <Weeb manga={mangaList} setManga={setMangaList} type={"Manga"}></Weeb> : (<></>) }
         {currentTab === "Browse" ? <Browse searchedList={searchedList} setSearchedList={setSearchedList}></Browse> : (<></>) }
+        {currentTab === "Signup" ? <Signup></Signup> : (<></>) }
       </div>
     </div>
   );
