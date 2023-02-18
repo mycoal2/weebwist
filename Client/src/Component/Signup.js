@@ -1,14 +1,21 @@
 import Axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const Signup = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [account, setAccount] = useState([]);
+
+    useEffect(() => {
+        Axios.get("http://localhost:3001/account").then((response) => {
+            setAccount(response.data);
+        });
+    }, []);
 
     const createAcc = () => {
         Axios.post("http://localhost:3001/signup", {username:username, password:password,
         }).then(() => {
-            console.log("Sucess");
+            alert("Sucess");
         });
     }
 
@@ -21,6 +28,14 @@ export const Signup = () => {
             <input type="text" onChange={(event) => {setPassword(event.target.value)}}></input>
             <button onClick={createAcc}> Signup </button>
         </div>
+        {/* <div>
+            {account.map((value) => 
+                <div>
+                    <div>{value.username}</div>
+                    <div>{value.password}</div>
+                </div>
+            )}
+        </div> */}
     </div>
   )
 }
