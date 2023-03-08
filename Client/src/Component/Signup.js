@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-export const Signup = () => {
+export const Signup = ({setUser, setCurrentTab}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [account, setAccount] = useState([]);
@@ -16,18 +16,22 @@ export const Signup = () => {
         Axios.post("http://localhost:3001/signup", {username:username, password:password,
         }).then(() => {
             alert("Sucess");
+            setUser(username);
+            setCurrentTab("Home");
         });
+        setUsername('');
+        setAccount('');
     }
 
   return (
-    <div className='signuptab'>
-        <div className='signuptab2'>
+    <section className='signuptab'>
+        <form className='signuptab2' onSubmit={createAcc}>
             <label>Username</label>
             <input type="text" onChange={(event) => {setUsername(event.target.value)}}></input>
             <label>Password</label>
-            <input type="text" onChange={(event) => {setPassword(event.target.value)}}></input>
+            <input secureTextEntry={true} type="password" onChange={(event) => {setPassword(event.target.value)}}></input>
             <button onClick={createAcc}> Signup </button>
-        </div>
+        </form>
         {/* <div>
             {account.map((value) => 
                 <div>
@@ -36,6 +40,6 @@ export const Signup = () => {
                 </div>
             )}
         </div> */}
-    </div>
+    </section>
   )
 }

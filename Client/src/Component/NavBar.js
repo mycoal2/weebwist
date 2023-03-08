@@ -1,6 +1,14 @@
-import React from 'react'
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
-export const NavBar = ({changeTab}) => {
+export const NavBar = ({changeTab, user}) => {
+  const [account, setAccount] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/account").then((response) => {
+        // setAccount(response.data);
+    });
+}, [], user);
+
   return (
     <nav className='nav'>
         <ul className='navbarList'>
@@ -13,10 +21,16 @@ export const NavBar = ({changeTab}) => {
             <li className="navbarItem" onClick={() => {changeTab("Weeb")}} id= "Weeb"> Weeb </li>
             <li className="navbarItem" onClick={() => {changeTab("Browse")}} id= "Browse"> Browse </li>
           </flex>
+          {user === "0" ? 
           <flex className="navbarFlex">
+          <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Login"> Login </li>
           <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Signup"> Signup </li>
-          <li className="navbarItem"><button> Icon1</button></li>
           </flex>
+          : 
+          <flex className="navbarFlex">
+          <li className="navbarItem" onClick={() => {changeTab("Home")}} id= "Profile"> {user.username} </li>
+          </flex>
+          }
         </ul>
     </nav>
   )

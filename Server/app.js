@@ -1,19 +1,18 @@
 const express = require("express");
 const app = express();
-// const bodyParser = require("body-parser");
 const mysql = require('mysql');
 const cors = require("cors");
 
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'password',
-  database : 'weeb_db'
+  password : 'root',
+  database : 'weeb_db',
+  socketPath: '/var/run/mysqld/mysqld.sock',
 });
 
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
 db.connect(function(err) {
   if (err) {
