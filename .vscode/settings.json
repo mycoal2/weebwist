@@ -15,6 +15,19 @@
             "database": "weeb_db",
             "username": "root",
             "password": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "localhost1",
+            "database": "weeb_db",
+            "username": "root",
+            "password": "password"
         }
     ]
 }

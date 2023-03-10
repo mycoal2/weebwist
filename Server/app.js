@@ -6,7 +6,7 @@ const cors = require("cors");
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'root',
+  password : 'password',
   database : 'weeb_db',
   socketPath: '/var/run/mysqld/mysqld.sock',
 });
@@ -32,9 +32,10 @@ app.get("/account", (req, res) => {
 app.post("/signup", (req,res) => {
     const username = req.body.username;
     const password = req.body.password;
-
-    const sqlInsert = "INSERT INTO accounts (username, password) VALUES (?,?)";
-    db.query(sqlInsert, [username, password], (err, result) => {
+    const email = req.body.email;
+    
+    const sqlInsert = "INSERT INTO accounts (username, password, email) VALUES (?,?,?)";
+    db.query(sqlInsert, [username, password, email], (err, result) => {
         if(err) {
             console.log(err);
         } else {
