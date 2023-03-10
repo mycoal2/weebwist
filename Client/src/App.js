@@ -7,6 +7,7 @@ import { Home } from './Component/Home';
 import { Browse } from './Component/Browse';
 import { Signup } from './Component/Signup';
 import { Login } from './Component/Login';
+import { Profile } from './Component/Profile';
 
 function App() {
   const [currentTab, setCurrentTab] = useState("Home");
@@ -29,6 +30,7 @@ function App() {
         {currentTab === "Browse" ? <Browse searchedList={searchedList} setSearchedList={setSearchedList}></Browse> : (<></>) }
         {currentTab === "Signup" ? <Signup setUser={setUser} setCurrentTab={setCurrentTab}></Signup> : (<></>) }
         {currentTab === "Login" ? <Login setUser={setUser} setCurrentTab={setCurrentTab}></Login> : (<></>) }
+        {currentTab === "Profile" ? <Profile setUser={setUser} setCurrentTab={setCurrentTab}></Profile> : (<></>) }
       </div>
     </div>
   );

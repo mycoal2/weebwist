@@ -23,12 +23,12 @@ export const NavBar = ({changeTab, user}) => {
           </flex>
           {user === "0" ? 
           <flex className="navbarFlex">
-          <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Login"> Login </li>
-          <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Signup"> Signup </li>
+            <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Login"> Login </li>
+            <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Signup"> Signup </li>
           </flex>
           : 
           <flex className="navbarFlex">
-          <li className="navbarItem" onClick={() => {changeTab("Home")}} id= "Profile"> {user.username} </li>
+            <li className="navbarItem" onClick={() => {changeTab("Profile")}} id= "Profile"> {user} </li>
           </flex>
           }
         </ul>
