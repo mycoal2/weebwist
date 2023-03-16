@@ -12,7 +12,7 @@ export const Signup = ({setUser, setCurrentTab}) => {
         Axios.get("http://localhost:3001/account").then((response) => {
             const user = response.data.map(res => res.username)
             setAccount(user);
-            console.log(user);
+            // console.log(user);
         });
     }, []);
 
@@ -34,8 +34,8 @@ export const Signup = ({setUser, setCurrentTab}) => {
             Axios.post("http://localhost:3001/signup", {username:username, password:password, email:email,
             }).then(() => {
                 alert("Sucess");
-                setUser(username);
-                setCurrentTab("Profile");
+                // setUser(username);   
+                setCurrentTab("Login");
             });
             setUsername("");
             setAccount("");
