@@ -14,7 +14,7 @@ function App() {
   const [mangaList, setMangaList] = useState([]);
   const [animeList, setAnimeList] = useState([]);
   const [searchedList, setSearchedList] = useState([]);
-  const [user, setUser] = useState("0")
+  const [user, setUser] = useState(0)
   
 
 
