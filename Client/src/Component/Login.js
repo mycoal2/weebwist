@@ -1,7 +1,9 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Login = ({setUser, setCurrentTab}) => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -15,7 +17,7 @@ export const Login = ({setUser, setCurrentTab}) => {
               let id = response.data.find(user => user.username === username.toLowerCase());
               if(id.password === password) {
                 setUser(id);
-                setCurrentTab("Home");
+                navigate("/Home")
               } else {
                 setError("Username or password does not match")
               }

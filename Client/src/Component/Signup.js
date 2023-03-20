@@ -1,7 +1,9 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-export const Signup = ({setUser, setCurrentTab}) => {
+export const Signup = ({setUser}) => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -27,15 +29,25 @@ export const Signup = ({setUser, setCurrentTab}) => {
     // }
 
     const createAcc = () => {
-        
+        if(username === "") {
+            setError("username is empty");
+            return;
+        } else if (password === "") {
+            setError("password is empty");
+            return;
+        } else if (email === "") {
+            setError("email is empty");
+            return;
+        }
+
         if(account.includes(username)) {
             setError("Username already taken")
         } else {
             Axios.post("http://localhost:3001/signup", {username:username, password:password, email:email,
             }).then(() => {
                 alert("Sucess");
+                navigate("/Login");
                 // setUser(username);   
-                setCurrentTab("Login");
             });
             setUsername("");
             setAccount("");
