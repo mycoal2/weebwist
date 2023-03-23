@@ -39,20 +39,23 @@ border:0px;
   height:65px;
 }
 .navbarLogo{
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 21px;
-  padding-left: 25px;
+  width: 200px;
+  height: 61px;
+  margin: 0;
 }
-.navbarLogo:hover {
+.navbarFlex1 {
+  display: flex;
+}
+.navbarFlex1:hover {
   background-color: rgb(52, 52, 52);
 }
+
 .navbarFlex {
   display:flex;
 }
 .navbarItem {
   color:white;
+  text-decoration: none;
   font-size: 20px;
   padding: 21px;
 }

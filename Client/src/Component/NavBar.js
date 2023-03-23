@@ -1,39 +1,30 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
+import logo from './WeebWLogo.png'
 
-export const NavBar = ({changeTab, user}) => {
-  const [account, setAccount] = useState([]);
-  useEffect(() => {
-    console.log(user);
-    if(user === 0) {
-      return;
-    }
-    Axios.get("http://localhost:3001/account").then((response) => {
-        setAccount(response.data.find(acc => acc.id === user).username);
-        console.log(response.data.find(acc => acc.id === user).username);
-    });
-}, [], user);
-
+export const NavBar = (user) => {
+  
   return (
     <nav className='nav'>
         <ul className='navbarList'>
-          <flex className="navbarLogo" onClick={() => {changeTab("Home")}} id= "Home">
-            WeebWist
+          <flex className="navbarFlex1"><NavLink style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/"><img className="navbarLogo" src={logo} alt="Logo" /></NavLink>  
           </flex>
           <flex className="navbarFlex">    
-            <li className="navbarItem" onClick={() => {changeTab("Manga")}} id= "Manga"> Manga </li>
-            <li className="navbarItem" onClick={() => {changeTab("Anime")}} id= "Anime"> Anime </li>
-            <li className="navbarItem" onClick={() => {changeTab("Weeb")}} id= "Weeb"> Weeb </li>
-            <li className="navbarItem" onClick={() => {changeTab("Browse")}} id= "Browse"> Browse </li>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Manga">Manga</NavLink>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Anime"> Anime </NavLink>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Weeb"> Weeb </NavLink>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Browse"> Browse </NavLink>
           </flex>
-          {user === 0 ? 
+          {user.user === "" ? 
           <flex className="navbarFlex">
-            <li className="navbarItem" onClick={() => {changeTab("Login")}} id= "Login"> Login </li>
-            <li className="navbarItem" onClick={() => {changeTab("Signup")}} id= "Signup"> Signup </li>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Login"> Login </NavLink>
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Signup"> Signup </NavLink>
           </flex>
           : 
           <flex className="navbarFlex">
-            <li className="navbarItem" onClick={() => {changeTab("Profile")}} id= "Profile"> {user} </li>
+            {console.log(user.username)}
+            <NavLink className="navbarItem" style={({isActive}) => {return isActive ? {'background-color': "hsla(136, 58%, 52%, 0.5)"} : {}}} to="/Profile">{user.user} </NavLink>
           </flex>
           }
         </ul>
