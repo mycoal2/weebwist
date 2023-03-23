@@ -8,16 +8,16 @@ export const Login = ({setUser, setCurrentTab}) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     
-
     const loginAttempt = () => {
       Axios.get("http://localhost:3001/account").then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             if(response.data.find(user => user.username === username.toLowerCase())) {
-              console.log("username found");
+              // console.log("username found");
               let id = response.data.find(user => user.username === username.toLowerCase());
               if(id.password === password) {
-                setUser(id);
-                navigate("/Home")
+                console.log(id.username);
+                setUser(id.username);
+                navigate("/")
               } else {
                 setError("Username or password does not match")
               }

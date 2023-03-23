@@ -7,14 +7,15 @@ export const NotFound = () => {
       setTimeout(() => {
          setTimer(timer - 1);
       }, 1000)
-   }, [timer])
+   })
 
    const navigate = useNavigate();
    useEffect(() => {
       setTimeout(() => {
-         navigate(-1)
+         // navigate(-1);
+         navigate("/");
       }, 5000)
-   }, [])
+   })
 
   return (
     <>

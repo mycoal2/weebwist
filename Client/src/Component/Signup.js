@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export const Signup = ({setUser}) => {
+export const Signup = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -28,7 +28,8 @@ export const Signup = ({setUser}) => {
     //     }
     // }
 
-    const createAcc = () => {
+    const createAcc = (event) => {
+        event.preventDefault();
         if(username === "") {
             setError("username is empty");
             return;
@@ -57,19 +58,25 @@ export const Signup = ({setUser}) => {
     }
 
   return (
-    <section className='signuptab'>
-        <div className='signuptab2'>
-            <label>Username</label>
-            <input type="text" onChange={(event) => {setUsername(event.target.value)}}></input>
-            <label>Password</label>
-            <input secureTextEntry={true} type="password" onChange={(event) => {setPassword(event.target.value)}}></input>
-            <label>Email</label>
-            <input type="text" onChange={(e) => {setEmail(e.target.value)}}></input>
+    <>
+        <form className='signuptab2'>
+            <label>
+                <p>Username</p>
+                <input type="text" onChange={(event) => {setUsername(event.target.value)}}></input>
+            </label>
+            <label>
+                <p>Password</p>
+                <input secureTextEntry={true} type="password" onChange={(event) => {setPassword(event.target.value)}}></input>
+            </label>
+            <label>
+                <p>Email</p>
+                <input type="text" onChange={(e) => {setEmail(e.target.value)}}></input>
+            </label>
             <button onClick={createAcc}> Signup </button>
             {error === "" ? <></>
                 : <div> {error} </div>
             }
-        </div>
-    </section>
+        </form>
+    </>
   )
 }
